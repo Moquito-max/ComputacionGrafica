@@ -1,6 +1,8 @@
 .vs/
 x64/
 x86/
+"External Libraries"/
+Debug/
 
 # Forzar a Git a guardar tus librerías manuales (.lib y .dll)
 # Esto asegura que tus carpetas de dependencias NO se ignoren
@@ -8,3 +10,5 @@ x86/
 !*.dll
 !*.h
 !*.hpp
+
+
