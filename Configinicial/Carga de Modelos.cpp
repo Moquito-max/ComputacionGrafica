@@ -1,3 +1,5 @@
+
+
 // Std. Includes
 #include <string>
 
@@ -95,10 +97,15 @@ int main( )
     
     // Load models
     Model dog((char*)"Models/RedDog.obj");
-    glm::mat4 projection = glm::perspective( camera.GetZoom( ), ( float )SCREEN_WIDTH/( float )SCREEN_HEIGHT, 0.1f, 100.0f );
-    
-  
+    Model egg((char*)"Models/White+Egg.obj");
+    Model jar((char*)"Models/untitledExport/untitledExport.obj");
+    Model stool((char*)"Models/Stool_Textures_2k/Stool_3Legged_OBJ.obj");
+    Model vase((char*)"Models/Magnolia_OBJ/Magnolia_OBJ.obj");
+    /*Model all((char*)"Models/all/all.obj");*/
 
+    glm::mat4 projection = glm::perspective( camera.GetZoom( ), ( float )SCREEN_WIDTH/( float )SCREEN_HEIGHT, 0.1f, 100.0f );
+
+ 
     // Game loop
     while (!glfwWindowShouldClose(window))
     {
@@ -121,16 +128,75 @@ int main( )
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "view"), 1, GL_FALSE, glm::value_ptr(view));
 
-        // Draw the loaded model
-        glm::mat4 model(1);
+        // ===== Dog =====
+        glm::mat4 model(1.0f);
+        model = glm::mat4(1.0f);
+        model = glm::translate(model, glm::vec3(1.9528f, -1.2665f, 2.3415f));
+        model = glm::scale(model, glm::vec3(4.9257f, 4.9257f, 4.9257f));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         dog.Draw(shader);
 
-        model = glm::translate(model, glm::vec3(3.0f, 0.0f, 0.0f));
-        model = glm::scale(model, glm::vec3(4.0f, 4.0f, 4.0f));
-        model = glm::rotate(model, glm::vec3(4.0f, 4.0f, 4.0f));
+        // ===== Egg1 =====
+        model = glm::mat4(1.0f);
+        model = glm::translate(model, glm::vec3(-0.7615f, -2.8962f, 2.1265f));
+        model = glm::rotate(model, glm::radians(194.8777f), glm::vec3(1.0f, 0.0f, 0.0f));
+        model = glm::rotate(model, glm::radians(69.1881f), glm::vec3(0.0f, 1.0f, 0.0f));
+        model = glm::rotate(model, glm::radians(80.3720f), glm::vec3(0.0f, 0.0f, 1.0f));
+        model = glm::scale(model, glm::vec3(0.0206f, 0.0206f, 0.0206f));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
-        dog.Draw(shader);
+        egg.Draw(shader);
+
+        // ===== Egg2 =====
+        model = glm::mat4(1.0f);
+        model = glm::translate(model, glm::vec3(-0.0052f, -2.8860f, 2.1567f));
+        model = glm::rotate(model, glm::radians(90.0000f), glm::vec3(1.0f, 0.0f, 0.0f));
+        model = glm::scale(model, glm::vec3(0.0207f, 0.0207f, 0.0207f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        egg.Draw(shader);
+
+        // ===== Egg3 =====
+        model = glm::mat4(1.0f);
+        model = glm::translate(model, glm::vec3(0.4641f, -2.9113f, 2.2385f));
+        model = glm::rotate(model, glm::radians(115.2893f), glm::vec3(1.0f, 0.0f, 0.0f));
+        model = glm::rotate(model, glm::radians(-10.4398f), glm::vec3(0.0f, 1.0f, 0.0f));
+        model = glm::rotate(model, glm::radians(26.9631f), glm::vec3(0.0f, 0.0f, 1.0f));
+        model = glm::scale(model, glm::vec3(0.0207f, 0.0207f, 0.0207f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        egg.Draw(shader);
+
+        // ===== Jar =====
+        model = glm::mat4(1.0f);
+        model = glm::translate(model, glm::vec3(0.0802f, -1.1032f, 5.2507f));
+        model = glm::scale(model, glm::vec3(0.6528f, 0.6528f, 0.6528f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        jar.Draw(shader);
+
+        // ===== Jar2 =====
+        model = glm::mat4(1.0f);
+        model = glm::translate(model, glm::vec3(-1.6822f, 0.1347f, 7.7248f));
+        model = glm::scale(model, glm::vec3(1.1976f, 1.1976f, 1.1976f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        jar.Draw(shader);
+
+
+
+        // ===== Stool =====
+        model = glm::mat4(1.0f);
+        model = glm::translate(model, glm::vec3(0.5807f, -2.4845f, 6.1797f));
+        model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        stool.Draw(shader);
+
+
+        // ===== Vase =====
+        model = glm::mat4(1.0f);
+        model = glm::translate(model, glm::vec3(1.4351f, -0.0506f, 1.4674f));
+        model = glm::scale(model, glm::vec3(0.6071f, 0.6071f, 0.6070f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        vase.Draw(shader);
+
+
+
 
         // Swap the buffers
         glfwSwapBuffers( window );
