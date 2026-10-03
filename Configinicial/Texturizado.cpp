@@ -1,5 +1,6 @@
-//Previo07  Guevara Muñoz Mariana
-//26/09/2026  317129883
+
+//Practica07  Guevara Muñoz Mariana
+//03/10/2026  317129883
 
 #include <iostream>
 #include <cmath>
@@ -24,8 +25,8 @@
 
 
 // Function prototypes
-void KeyCallback(GLFWwindow *window, int key, int scancode, int action, int mode);
-void MouseCallback(GLFWwindow *window, double xPos, double yPos);
+void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mode);
+void MouseCallback(GLFWwindow* window, double xPos, double yPos);
 void DoMovement();
 
 // Window dimensions
@@ -46,7 +47,7 @@ glm::vec3 lightPos(1.2f, 1.0f, 2.0f);
 GLfloat deltaTime = 0.0f;	// Time between current frame and last frame
 GLfloat lastFrame = 0.0f;  	// Time of last frame
 
-							// The MAIN function, from here we start the application and run the game loop
+// The MAIN function, from here we start the application and run the game loop
 int main()
 {
 	// Init GLFW
@@ -103,23 +104,67 @@ int main()
 	GLfloat vertices[] =
 	{
 		// Positions            // Colors              // Texture Coords
-		-0.5f, -0.5f, 0.0f,    1.0f, 1.0f,1.0f,		0.0f,0.0f,
-		0.5f, -0.5f, 0.0f,	   1.0f, 1.0f,1.0f,		1.0f,0.0f,
-		0.5f,  0.5f, 0.0f,     1.0f, 1.0f,1.0f,	    1.0f,1.0f,
-		-0.5f,  0.5f, 0.0f,    1.0f, 1.0f,1.0f,		0.0f,1.0f,
+		-0.5f, -0.5f, 0.0f,    1.0f, 1.0f,1.0f,			0.2956f, 0.3395f,
+		0.5f, -0.5f, 0.0f,	   1.0f, 1.0f,1.0f,			0.5194f, 0.3395f,
+		0.5f,  0.5f, 0.0f,     1.0f, 1.0f,1.0f,			0.5194f, 0.6132f,
+		-0.5f,  0.5f, 0.0f,    1.0f, 1.0f,1.0f,			0.2956f, 0.6132f,
 
-		
+		//ATRÁS
+
+		0.5f, -0.5f, -1.0f,    1.0f, 1.0f,1.0f,			0.7581f, 0.3395f,
+		-0.5f, -0.5f, -1.0f,   1.0f, 1.0f,1.0f,			0.9819f, 0.3395f,
+		-0.5f,  0.5f, -1.0f,   1.0f, 1.0f,1.0f,			0.9819f, 0.6132f,
+		0.5f,  0.5f, -1.0f,    1.0f, 1.0f,1.0f,			0.7581f, 0.6132f,
+
+		//IZQUIERDA
+
+		-0.5f, -0.5f, -1.0f,   1.0f, 1.0f,1.0f,			0.0644f, 0.3395f,
+		-0.5f, -0.5f, 0.0f,	   1.0f, 1.0f,1.0f,			0.2881f, 0.3395f,
+		-0.5f,  0.5f, 0.0f,    1.0f, 1.0f,1.0f,			0.2881f, 0.6132f,
+		-0.5f,  0.5f, -1.0f,   1.0f, 1.0f,1.0f,			0.0644f, 0.6132f,
+
+		//DERECHA
+		0.5f, -0.5f, 0.0f,    1.0f, 1.0f,1.0f,			0.5269f, 0.3395f,
+		0.5f, -0.5f, -1.0f,	  1.0f, 1.0f,1.0f,			0.7506f, 0.3395f,
+		0.5f,  0.5f, -1.0f,   1.0f, 1.0f,1.0f,			0.7506f, 0.6132f,
+		0.5f,  0.5f, 0.0f,    1.0f, 1.0f,1.0f,			0.5269f, 0.6132f,
+
+		//ARRIBA
+		0.5f, 0.5f, -1.0f,    1.0f, 1.0f,1.0f,			0.2956f, 0.6223f,
+		-0.5f, 0.5f, -1.0f,	  1.0f, 1.0f,1.0f,			0.5194f, 0.6223f,
+		-0.5f,  0.5f, 0.0f,   1.0f, 1.0f,1.0f,			0.5194f, 0.8960f,
+		0.5f,  0.5f, 0.0f,    1.0f, 1.0f,1.0f,			0.2956f, 0.8960f,
+
+		//ABAJO
+		-0.5f, -0.5f, -1.0f,  1.0f, 1.0f,1.0f,			0.2956f, 0.0566f,
+		-0.5f, -0.5f, 0.0f,	  1.0f, 1.0f,1.0f,			0.5194f, 0.0566f,
+		0.5f, -0.5f, 0.0f,    1.0f, 1.0f,1.0f,			0.5194f, 0.3303f,
+		0.5f, -0.5f, -1.0f,   1.0f, 1.0f,1.0f,			0.2956f, 0.3303f,
 	};
 
 	GLuint indices[] =
 	{  // Note that we start from 0!
 		0,1,3,
-		1,2,3
-	
+		1,2,3,
+
+		4,5,7,
+		5,6,7,
+
+		8,9,11,
+		9,10,11,
+
+		12,13,15,
+		13,14,15,
+
+		16,17,19,
+		17,18,19,
+
+		20,21,23,
+		21,22,23
 	};
 
 	// First, set the container's VAO (and VBO)
-	GLuint VBO, VAO,EBO;
+	GLuint VBO, VAO, EBO;
 	glGenVertexArrays(1, &VAO);
 	glGenBuffers(1, &VBO);
 	glGenBuffers(1, &EBO);
@@ -132,35 +177,35 @@ int main()
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
 	// Position attribute
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid *)0);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)0);
 	glEnableVertexAttribArray(0);
 	// Color attribute
-	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid *)(3 * sizeof(GLfloat)));
+	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
 	glEnableVertexAttribArray(1);
 	// Texture Coordinate attribute
-	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid *)(6 * sizeof(GLfloat)));
+	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)(6 * sizeof(GLfloat)));
 	glEnableVertexAttribArray(2);
 	glBindVertexArray(0);
 
 	// Load textures
 	GLuint texture1;
 	glGenTextures(1, &texture1);
-	glBindTexture(GL_TEXTURE_2D,texture1);
-	int textureWidth, textureHeight,nrChannels;
+	glBindTexture(GL_TEXTURE_2D, texture1);
+	int textureWidth, textureHeight, nrChannels;
 	stbi_set_flip_vertically_on_load(true);
-	unsigned char *image;
+	unsigned char* image;
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST_MIPMAP_NEAREST);
 	// Diffuse map
-	image = stbi_load("images/window.png", &textureWidth, &textureHeight, &nrChannels,0);
+	image = stbi_load("images/dadoEm.jpg", &textureWidth, &textureHeight, &nrChannels, 0);
 	glBindTexture(GL_TEXTURE_2D, texture1);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, textureWidth, textureHeight, 0, GL_RGBA, GL_UNSIGNED_BYTE, image);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, textureWidth, textureHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, image);
 	glGenerateMipmap(GL_TEXTURE_2D);
 	if (image)
 	{
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, textureWidth, textureHeight, 0, GL_RGBA, GL_UNSIGNED_BYTE, image);
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, textureWidth, textureHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, image);
 		glGenerateMipmap(GL_TEXTURE_2D);
 	}
 	else
@@ -169,7 +214,7 @@ int main()
 	}
 	stbi_image_free(image);
 
-	
+
 
 	// Game loop
 	while (!glfwWindowShouldClose(window))
@@ -209,7 +254,7 @@ int main()
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		// Draw the light object (using light's vertex attributes)
 		glBindVertexArray(VAO);
-		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+		glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
 		glBindVertexArray(0);
 
 		// Swap the screen buffers
@@ -251,7 +296,7 @@ void DoMovement()
 }
 
 // Is called whenever a key is pressed/released via GLFW
-void KeyCallback(GLFWwindow *window, int key, int scancode, int action, int mode)
+void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mode)
 {
 	if (GLFW_KEY_ESCAPE == key && GLFW_PRESS == action)
 	{
@@ -271,7 +316,7 @@ void KeyCallback(GLFWwindow *window, int key, int scancode, int action, int mode
 	}
 }
 
-void MouseCallback(GLFWwindow *window, double xPos, double yPos)
+void MouseCallback(GLFWwindow* window, double xPos, double yPos)
 {
 	if (firstMouse)
 	{
