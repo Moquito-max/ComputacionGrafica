@@ -1,6 +1,6 @@
 #version 330 core
 
-#define NUMBER_OF_POINT_LIGHTS 4
+#define NUMBER_OF_POINT_LIGHTS 1
 
 struct Material
 {
@@ -55,10 +55,8 @@ out vec4 color;
 
 uniform vec3 viewPos;
 uniform DirLight dirLight;
-uniform DirLight dirLight2;
 uniform PointLight pointLights[NUMBER_OF_POINT_LIGHTS];
 uniform SpotLight spotLight;
-uniform SpotLight spotLight2;
 uniform Material material;
 uniform int transparency;
 
@@ -75,8 +73,6 @@ void main( )
     
     // Directional lighting
     vec3 result = CalcDirLight( dirLight, norm, viewDir );
-    // Second directional light
-    result += CalcDirLight(dirLight2, norm, viewDir);
     
     // Point lights
     for ( int i = 0; i < NUMBER_OF_POINT_LIGHTS; i++ )
@@ -84,14 +80,11 @@ void main( )
         result += CalcPointLight( pointLights[i], norm, FragPos, viewDir );
     }
     
-    // Spotlight 1: sigue a la cámara
-    result += CalcSpotLight(spotLight, norm, FragPos, viewDir);
-
-    // Spotlight 2: fija en el escenario
-    result += CalcSpotLight(spotLight2, norm, FragPos, viewDir);
-   
+    // Spot light
+    result += CalcSpotLight( spotLight, norm, FragPos, viewDir );
+ 	
     color = vec4( result,texture(material.diffuse, TexCoords).rgb );
-	if(color.a < 0.1 && transparency==1)
+	  if(color.a < 0.1 && transparency==1)
         discard;
 
 }
