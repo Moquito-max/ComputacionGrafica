@@ -1,5 +1,5 @@
-//Previo10		Guevara Muñoz Mariana
-//19/10/2026	317129883
+//Practica10		Guevara Muñoz Mariana
+//24/10/2026	317129883
 
 #include <iostream>
 #include <cmath>
@@ -104,6 +104,8 @@ float vertices[] = {
 glm::vec3 Light1 = glm::vec3(0);
 //Anim
 float rotBall = 0;
+float angleDog = 0;
+float angleBall = 0;
 bool AnimBall = false;
 
 
@@ -123,7 +125,7 @@ int main()
 	glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);*/
 
 	// Create a GLFWwindow object that we can use for GLFW's functions
-	GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "Animacion basica", nullptr, nullptr);
+	GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "Practica10 Guevara Munoz Mariana 317129883 24/10/2026", nullptr, nullptr);
 
 	if (nullptr == window)
 	{
@@ -165,7 +167,6 @@ int main()
 	Model Dog((char*)"Models/RedDog.obj");
 	Model Piso((char*)"Models/piso.obj");
 	Model Ball((char*)"Models/ball.obj");
-
 
 
 	// First, set the container's VAO (and VBO)
@@ -289,21 +290,34 @@ int main()
 		Piso.Draw(lightingShader);
 
 		model = glm::mat4(1);
-		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		float radio = 2.0f;
+		float x = radio * cos(glm::radians(angleDog));
+		float z = -radio * sin(glm::radians(angleDog));
+		// Intensidad del encuentro cerca de los cruces
+		float encuentro = pow(abs(cos(glm::radians(angleDog))),16.0f);
+		// El perro sube hasta la mitad
+		float alturaDog = 0.5f * encuentro;
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(x, alturaDog, z));
+		model = glm::rotate(model,glm::radians(angleDog - 180.0f),glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniform1i(glGetUniformLocation(lightingShader.Program, "transparency"), 0);
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		Dog.Draw(lightingShader);
 
 		model = glm::mat4(1);
-		glEnable(GL_BLEND);//Avtiva la funcionalidad para trabajar el canal alfa
+		float radioBall = 2.0f;
+		float xBall = radioBall * cos(glm::radians(rotBall));
+		float zBall = radioBall * sin(glm::radians(rotBall));
+		// La pelota baja cuando el perro sube
+		float alturaBall = 1.0f - (0.5f * encuentro);
+		model = glm::translate(model,glm::vec3(xBall, alturaBall, zBall));
+		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform1i(glGetUniformLocation(lightingShader.Program, "transparency"), 1);
-		model = glm::rotate(model, glm::radians(rotBall), glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-	    Ball.Draw(lightingShader); 
-		glDisable(GL_BLEND);  //Desactiva el canal alfa 
-		glBindVertexArray(0);
-	
+		Ball.Draw(lightingShader);
+		glDisable(GL_BLEND);
+
 
 		// Also draw the lamp object, again binding the appropriate shader
 		lampShader.Use();
@@ -448,9 +462,15 @@ void KeyCallback(GLFWwindow *window, int key, int scancode, int action, int mode
 void Animation() {
 	if (AnimBall)
 	{
-		rotBall += 0.2f;
+		rotBall += 0.02f;
 		//printf("%f", rotBall);
+		angleDog += 0.02f;
+		if (angleDog >= 360.0f)
+		{
+			angleDog -= 360.0f;
+		}
 	}
+	
 	else
 	{
 		//rotBall = 0.0f;
