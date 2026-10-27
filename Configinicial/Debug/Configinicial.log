@@ -1,24 +1,31 @@
-﻿  Animacion_Basica.cpp
-C:\Users\furby\Desktop\Configinicial\Configinicial\Animacion_Basica.cpp(198,24): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\furby\Desktop\Configinicial\Configinicial\Animacion_Basica.cpp(238,20): warning C4244: '=': conversión de 'double' a 'T'; posible pérdida de datos
-C:\Users\furby\Desktop\Configinicial\Configinicial\Animacion_Basica.cpp(238,20): warning C4244:         with
-C:\Users\furby\Desktop\Configinicial\Configinicial\Animacion_Basica.cpp(238,20): warning C4244:         [
-C:\Users\furby\Desktop\Configinicial\Configinicial\Animacion_Basica.cpp(238,20): warning C4244:             T=float
-C:\Users\furby\Desktop\Configinicial\Configinicial\Animacion_Basica.cpp(238,20): warning C4244:         ]
-C:\Users\furby\Desktop\Configinicial\Configinicial\Animacion_Basica.cpp(239,20): warning C4244: '=': conversión de 'double' a 'T'; posible pérdida de datos
-C:\Users\furby\Desktop\Configinicial\Configinicial\Animacion_Basica.cpp(239,20): warning C4244:         with
-C:\Users\furby\Desktop\Configinicial\Configinicial\Animacion_Basica.cpp(239,20): warning C4244:         [
-C:\Users\furby\Desktop\Configinicial\Configinicial\Animacion_Basica.cpp(239,20): warning C4244:             T=float
-C:\Users\furby\Desktop\Configinicial\Configinicial\Animacion_Basica.cpp(239,20): warning C4244:         ]
-C:\Users\furby\Desktop\Configinicial\Configinicial\Animacion_Basica.cpp(240,20): warning C4244: '=': conversión de 'double' a 'T'; posible pérdida de datos
-C:\Users\furby\Desktop\Configinicial\Configinicial\Animacion_Basica.cpp(240,20): warning C4244:         with
-C:\Users\furby\Desktop\Configinicial\Configinicial\Animacion_Basica.cpp(240,20): warning C4244:         [
-C:\Users\furby\Desktop\Configinicial\Configinicial\Animacion_Basica.cpp(240,20): warning C4244:             T=float
-C:\Users\furby\Desktop\Configinicial\Configinicial\Animacion_Basica.cpp(240,20): warning C4244:         ]
-C:\Users\furby\Desktop\Configinicial\Configinicial\Animacion_Basica.cpp(484,11): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\furby\Desktop\Configinicial\Configinicial\Animacion_Basica.cpp(485,11): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\furby\Desktop\Configinicial\Configinicial\Animacion_Basica.cpp(489,18): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\furby\Desktop\Configinicial\Configinicial\Animacion_Basica.cpp(490,18): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\furby\Desktop\Configinicial\Configinicial\Animacion_Basica.cpp(492,10): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\furby\Desktop\Configinicial\Configinicial\Animacion_Basica.cpp(493,10): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+﻿  Maquina de estados.cpp
+C:\Users\furby\Desktop\Configinicial\Configinicial\Maquina de estados.cpp(211,24): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\furby\Desktop\Configinicial\Configinicial\Maquina de estados.cpp(251,20): warning C4244: '=': conversión de 'double' a 'T'; posible pérdida de datos
+C:\Users\furby\Desktop\Configinicial\Configinicial\Maquina de estados.cpp(251,20): warning C4244:         with
+C:\Users\furby\Desktop\Configinicial\Configinicial\Maquina de estados.cpp(251,20): warning C4244:         [
+C:\Users\furby\Desktop\Configinicial\Configinicial\Maquina de estados.cpp(251,20): warning C4244:             T=float
+C:\Users\furby\Desktop\Configinicial\Configinicial\Maquina de estados.cpp(251,20): warning C4244:         ]
+C:\Users\furby\Desktop\Configinicial\Configinicial\Maquina de estados.cpp(252,20): warning C4244: '=': conversión de 'double' a 'T'; posible pérdida de datos
+C:\Users\furby\Desktop\Configinicial\Configinicial\Maquina de estados.cpp(252,20): warning C4244:         with
+C:\Users\furby\Desktop\Configinicial\Configinicial\Maquina de estados.cpp(252,20): warning C4244:         [
+C:\Users\furby\Desktop\Configinicial\Configinicial\Maquina de estados.cpp(252,20): warning C4244:             T=float
+C:\Users\furby\Desktop\Configinicial\Configinicial\Maquina de estados.cpp(252,20): warning C4244:         ]
+C:\Users\furby\Desktop\Configinicial\Configinicial\Maquina de estados.cpp(253,20): warning C4244: '=': conversión de 'double' a 'T'; posible pérdida de datos
+C:\Users\furby\Desktop\Configinicial\Configinicial\Maquina de estados.cpp(253,20): warning C4244:         with
+C:\Users\furby\Desktop\Configinicial\Configinicial\Maquina de estados.cpp(253,20): warning C4244:         [
+C:\Users\furby\Desktop\Configinicial\Configinicial\Maquina de estados.cpp(253,20): warning C4244:             T=float
+C:\Users\furby\Desktop\Configinicial\Configinicial\Maquina de estados.cpp(253,20): warning C4244:         ]
+C:\Users\furby\Desktop\Configinicial\Configinicial\Maquina de estados.cpp(538,15): warning C4305: '+=': truncamiento de 'double' a 'T'
+C:\Users\furby\Desktop\Configinicial\Configinicial\Maquina de estados.cpp(538,15): warning C4305:         with
+C:\Users\furby\Desktop\Configinicial\Configinicial\Maquina de estados.cpp(538,15): warning C4305:         [
+C:\Users\furby\Desktop\Configinicial\Configinicial\Maquina de estados.cpp(538,15): warning C4305:             T=float
+C:\Users\furby\Desktop\Configinicial\Configinicial\Maquina de estados.cpp(538,15): warning C4305:         ]
+C:\Users\furby\Desktop\Configinicial\Configinicial\Maquina de estados.cpp(549,11): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\furby\Desktop\Configinicial\Configinicial\Maquina de estados.cpp(550,11): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\furby\Desktop\Configinicial\Configinicial\Maquina de estados.cpp(554,18): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\furby\Desktop\Configinicial\Configinicial\Maquina de estados.cpp(555,18): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\furby\Desktop\Configinicial\Configinicial\Maquina de estados.cpp(557,10): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\furby\Desktop\Configinicial\Configinicial\Maquina de estados.cpp(558,10): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+soil2-debug.lib(image_DXT.obj) : warning LNK4099: no se encontró PDB 'soil2-debug.pdb' con 'soil2-debug.lib(image_DXT.obj)' o en 'C:\Users\furby\Desktop\Configinicial\Debug\soil2-debug.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
+soil2-debug.lib(SOIL2.obj) : warning LNK4099: no se encontró PDB 'soil2-debug.pdb' con 'soil2-debug.lib(SOIL2.obj)' o en 'C:\Users\furby\Desktop\Configinicial\Debug\soil2-debug.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
   Configinicial.vcxproj -> C:\Users\furby\Desktop\Configinicial\Debug\Configinicial.exe
