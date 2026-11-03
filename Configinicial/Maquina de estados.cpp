@@ -108,10 +108,13 @@ int dogAnim = 0;
 float FLegs = 0.0f;
 float RLegs = 0.0f;
 float head = 0.0f;
+float headY = 0.0f;
 float tail = 0.0f;
 glm::vec3 dogPos (0.0f,0.0f,0.0f);
 float dogRot = 0.0f;
 bool step = false;
+bool turningDog = false;
+float turnAngle = 0.0f;
 
 
 
@@ -314,6 +317,7 @@ int main()
 		model = modelTemp;
 		model = glm::translate(model, glm::vec3(0.0f, 0.093f, 0.208f));
 		model = glm::rotate(model, glm::radians(head), glm::vec3(0.0f, 0.0f, 1.0f));
+		model = glm::rotate(model, glm::radians(headY), glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		HeadDog.Draw(lightingShader);
 		//Tail 
@@ -535,9 +539,54 @@ void Animation() {
 			if (RLegs < -15.0f) //Condition
 				step = false;
 		}
-		dogPos.z += 0.0005;
-		if (dogPos.z >= 2.3f)
-			dogAnim = 0;
+		if (turningDog)
+		{
+			// Regresa suavemente a la posición neutral en el eje Z
+			if (head > 0.0f)
+				head -= 0.05f;
+			else if (head < 0.0f)
+				head += 0.05f;
+
+			// Evita pequeños valores residuales
+			if (abs(head) < 0.05f)
+				head = 0.0f;
+		}
+		if (!turningDog && dogPos.z < 1.2f)
+		{
+			dogPos.z += 0.0005f;
+		}
+		/*if (!turningDog && (dogPos.z > -1.2f && turnAngle == 180 ))
+		{
+			dogPos.z -= 0.0005f;
+		}*/
+		else
+		{
+			turningDog = true;
+
+			if (turnAngle < 180.0f)
+			{
+				if (head == 0)
+					head = 0;
+				// Giro gradual hacia la derecha
+				turnAngle += 0.03f;
+				dogRot = -turnAngle;
+
+				// La cabeza anticipa ligeramente el giro
+				if (headY <= 1)
+				headY = -turnAngle * 0.2f;
+
+				// Avanza siguiendo la orientación del perro
+				float angleRad = glm::radians(dogRot);
+
+				dogPos.x += sin(angleRad) * 0.0005f;
+				dogPos.z += cos(angleRad) * 0.0005f;
+			}
+			else
+			{
+				turningDog = false;
+			}
+		}
+			
 	}
 	
 }
